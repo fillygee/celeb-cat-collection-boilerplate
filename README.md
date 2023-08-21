@@ -1,0 +1,1 @@
+# celeb-cat-collection-boilerplate
