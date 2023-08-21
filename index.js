@@ -1,22 +1,7 @@
-async function checkLogin() {
-  if (!document.cookie) {
-    return;
-  }
+require("dotenv").config();
+const api = require("./app");
+const PORT = process.env.PORT || 8080;
 
-  const options = {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-  };
-
-  const response = await fetch("/users/ping", options);
-  const data = await response.json();
-  console.log(data);
-  if (data.status === "authorized") {
-    window.location.assign("/homepage");
-  }
-}
-
-checkLogin();
+api.listen(PORT, () => {
+    console.log("App is listening on port " + PORT);
+});
